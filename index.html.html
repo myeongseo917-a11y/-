@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✈️ 두근두근 세계 여행 계획하기</title>
+    <style>
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #2a75d3;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        .welcome-box {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 15px 20px;
+            max-width: 750px;
+            margin: 0 auto 25px auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            line-height: 1.7;
+            color: #444;
+            font-size: 15px;
+            word-break: keep-all;
+        }
+        .welcome-box p {
+            margin: 6px 0;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #2a75d3;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto 30px auto;
+        }
+        .country-btn {
+            font-size: 15px;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .country-btn:hover {
+            transform: scale(1.05);
+            background-color: #ffd700;
+        }
+        .info-card {
+            display: none;
+            background: white;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 25px;
+            border-radius: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            border: 3px solid #2a75d3;
+            text-align: left;
+            animation: fadeIn 0.4s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .info-card h2 {
+            text-align: center;
+            margin-top: 0;
+            color: #333;
+            font-size: 26px;
+            border-bottom: 2px dashed #ddd;
+            padding-bottom: 12px;
+        }
+        .country-img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+        }
+        .info-section {
+            margin: 15px 0;
+        }
+        .info-title {
+            font-weight: bold;
+            color: #2a75d3;
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+        .info-text {
+            font-size: 15px;
+            color: #444;
+            line-height: 1.6;
+            background: #fcfcfc;
+            padding: 15px;
+            border-radius: 12px;
+            border-left: 4px solid #ffd700;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>✈️ 두근두근 세계 여행 계획하기</h1>
+    
+    <div class="welcome-box">
+        <p>🎉 <strong>2학년 달반 친구들!</strong> 여행을 간다면 어디로 가고 싶나요? 거기서 무엇을 하고 싶나요?</p>
+        <p>여행 계획을 세우며 <span class="highlight">내가 여행을 가고 싶은 이유는 무엇인지, 여행의 목적</span>을 생각해 봅시다.</p>
+        <p>엉성해도 좋으니 자유롭게 나만의 여행 계획을 상상해보세요. ✨</p>
+        <p style="color: #777; font-size: 14px; margin-top: 10px;">💡 혹시 답하기 어려운 질문이 있다면 아래 자료를 참고해도 괜찮아요.</p>
+    </div>
+
+    <div class="button-container">
+        <button class="country-btn" onclick="showCountry('england')">🏴󠁧󠁢󠁥󠁮󠁧󠁿 영국</button>
+        <button class="country-btn" onclick="showCountry('usa')">🇺🇸 미국</button>
+        <button class="country-btn" onclick="showCountry('philippines')">🇵🇭 필리핀</button>
+        <button class="country-btn" onclick="showCountry('france')">🇫🇷 프랑스</button>
+        <button class="country-btn" onclick="showCountry('japan')">🇯🇵 일본</button>
+        <button class="country-btn" onclick="showCountry('china')">🇨🇳 중국</button>
+        <button class="country-btn" onclick="showCountry('vietnam')">🇻🇳 베트남</button>
+        <button class="country-btn" onclick="showCountry('singapore')">🇸🇬 싱가포르</button>
+        <button class="country-btn" onclick="showCountry('australia')">🇦🇺 호주</button>
+        <button class="country-btn" onclick="showCountry('canada')">🇨🇦 캐나다</button>
+        <button class="country-btn" onclick="showCountry('brazil')">🇧🇷 브라질</button>
+        <button class="country-btn" onclick="showCountry('egypt')">🇪🇬 이집트</button>
+        <button class="country-btn" onclick="showCountry('italy')">🇮🇹 이탈리아</button>
+        <button class="country-btn" onclick="showCountry('germany')">🇩🇪 독일</button>
+        <button class="country-btn" onclick="showCountry('spain')">🇪🇸 스페인</button>
+        <button class="country-btn" onclick="showCountry('switzerland')">🇨🇭 스위스</button>
+        <button class="country-btn" onclick="showCountry('kenya')">🇰🇪 케냐</button>
+        <button class="country-btn" onclick="showCountry('india')">🇮🇳 인도</button>
+        <button class="country-btn" onclick="showCountry('mexico')">🇲🇽 멕시코</button>
+    </div>
+
+    <div id="infoCard" class="info-card">
+        <h2 id="countryName">나라 이름</h2>
+        
+        <img id="countryImg" class="country-img" src="" alt="나라 사진">
+        
+        <div class="info-section">
+            <div class="info-title">🌏 어떤 곳인가요?</div>
+            <div id="story1" class="info-text">내용 1</div>
+        </div>
+
+        <div class="info-section">
+            <div class="info-title">💡 여행할 때 알아두면 좋은 이야기</div>
+            <div id="story2" class="info-text">내용 2</div>
+        </div>
+    </div>
+
+    <script>
+        // 영구적으로 사용 가능한 위키미디어 오픈 라이선스 이미지 주소로 교체
+        const countryData = {
+            england: {
+                name: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 영국 (런던)",
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Palace_of_Westminster_from_the_Dome_of_Methodist_Central_Hall.jpg/640px-Palace_of_Westminster_from_the_Dome_of_Methodist_Central_Hall.jpg",
+                story1: "바다 건너 멀리 있는 섬나라로, 인천공항에서 비행기를 타고 반나절(12시간) 동안 하늘을 날아가야 해요. 멋진 신사들의 나라이기도 하지만, 날씨가 무척 선선하고 하루에도 몇 번씩 기습적으로 비가 내리는 신기한 기후를 가지고 있답니다.",
+                story2: "이곳 사람들은 노릇하게 튀긴 생선과 감자 요리인 '피시 앤 칩스'를 즐겨 먹고, 오후에는 따뜻한 홍차를 마셔요. 웅장한 시계탑 빅벤을 구경하거나, 손흥민 선수가 뛰는 거대한 경기장에서 멋진 축구 시합을 직관하는 특별한 경험을 할 수 있어요."
+            },
+            usa: {
+                name: "🇺🇸 미국 (뉴욕)",
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Statue_of_Liberty_7.jpg/640px-Statue_of_Liberty_7.jpg",
+                story1: "우리나라에서 비행기를 타고 14시간 넘게 태평양 바다를 건너가야 하는 아주 커다란 나라예요. 한국처럼 봄, 여름, 가을, 겨울이 뚜렷한데, 가을에 가면 거리에 낙엽이 예쁘게 물들어 걷기 아주 좋습니다.",
+                story2: "얼굴만 한 크기로 썰어주는 바삭한 뉴욕 피자나 두툼한 패티가 들어간 수제 햄버거, 감자튀김이 아주 유명해요. 바다 한가운데 우뚝 솟은 '자유의 여신상'을 보러 배를 타거나, 만화 속 주인공들이 살아 움직이는 환상적인 디즈니랜드 놀이공원을 탐험할 수 있습니다."
+            },
+            philippines: {
+                name: "🇵🇭 필리핀 (보라카이)",
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Boracay_White_Beach.jpg/640px-Boracay_White_Beach.jpg",
+                story1: "비행기를 타고 4시간 정도만 남쪽으로 날아가면 만날 수 있는 가까운 바다나라예요. 일 년 내내 쨍쨍하고 아주 더운 여름 날씨가 계속되는데, 우리나라의 추운 겨울철에 방문하면 날씨가 쾌적해서 여행하기 딱 좋답니다.",
+                story2: "사방이 투명한 에메랄드빛 바다라 얇은 옷을 입고 시원한 바닷물에서 수영을 하거나 모래성을 쌓으며 놀기 좋아요. 시장에 가면 샛노랗게 잘 익은 달콤한 망고 셰이크와 바나나 구이를 저렴하고 맛있게 사 먹을 수 있어요."
+            },
+            france: {
+                name: "🇫🇷 프랑스 (파리)",
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Tour_Eiffel_mars_2015.jpg/640px-Tour_Eiffel_mars_2015.jpg",
+                story1: "인천에서 비행기로 12시간을 가야 하는 예술과 낭만의 나라입니다. 선선한 바람이 부는 봄이나 가을에 여행하기 가장 좋은데, 아침과 밤에는 갑자기 바람이 차가워질 수 있어서 몸을 따뜻하게 해줄 가디건이나 바람막이가 유용해요.",
+                story2: "골목마다 고소한 냄새를 풍기는 크루아상 빵집이 가득하고, 파스텔톤의 달콤한 마카롱이 유명합니다. 철로 만든 거대하고 아름다운 '에펠탑' 아래에서 피크닉을 즐기거나 모나리자 그림이 있는 거대한 루브르 박물관을 모험할 수 있어요."
+            },
+            japan: {
+                name: "🇯🇵 일본 (도쿄)",
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Chureito_Pagoda_with_Mount_Fuji.jpg/640px-Chureito_Pagoda_with_Mount_Fuji.jpg",
+                story1: "한국과 바다 하나를 사이에 두고 있는 가장 가까운 이웃 나라예요. 비행기를 타면 2시간 만에 도착하고, 부산에서는 커다란 여객선을 타고 바다를 건너갈 수도 있어요. 사계절 날씨도 우리나라와 아주 비슷합니다.",
+                story2: "분홍색 벚꽃이 만발하는 봄에 가면 축제를 즐기기 좋아요. 신선한 생선을 올린 초밥, 따뜻한 국물의 라멘, 문어가 씹히는 타코야끼 등 입에 맞는 음식이 많습니다. 아기자기한 포켓몬 센터를 구경하거나 유니버셜 스튜디오 놀이공원을 즐길 수 있어요."
+            },
+            china: {
+                name: "🇨🇳 중국 (베이징)",
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/The_Great_Wall_of_China_at_Mutianyu_-_Overview.jpg/640px-The_Great_Wall_of_China_at_Mutianyu_-_Overview.jpg",
+                story1: "우리나라 바로 옆에 붙어 있는 엄청나게 넓은 땅을 가진 나라예요. 비행기로 2시간이면 갈 수 있죠. 날씨는 한국과 비슷해 가을에 여행하기 좋지만, 봄철에는 모래바람(황사)이 불 수 있어 호흡기를 지켜줄 물건이 필요해요.",
+                story2: "전통 요리로는 껍질이 과자처럼 바삭한 오리 구이(베이징 덕)가 있고, 길거리에서는 달콤한 설탕 시럽을 바른 과일 꼬치 '탕후루'를 팔아요. 우주에서도 보인다는 기나긴 만리장성을 성벽을 따라 걸어보거나, 판다 기지에서 대나무를 먹는 판다를 볼 수 있어요."
+            },
+            vietnam: {
+                name: "🇻🇳 베트남 (다낭)",
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Da_Nang_beach_view.jpg/640px-Da_Nang_beach_view.jpg",
+                story1: "비행기를 타고 아래로 5시간 정도 날아가면 나오는 따뜻한 남쪽 나라입니다. 일 년 내내 더운 편이라 가벼운 옷차림이 좋은데, 비가 오지 않고 비교적 시원한 11월에서 2월 사이에 방문하면 야외 활동을 하기에 아주 수월합니다.",
+                story2: "강가에서 베트남의 뾰족한 전통 모자를 쓰고 둥근 바구니 모양의 배를 타는 이색적인 경험을 할 수 있어요. 고기 국물에 말아주는 따뜻한 쌀국수와 바삭한 반세오 부침개를 맛보고, 야시장에서 화려한 등불을 배경으로 사진을 남기기 좋습니다."
+            },
+            singapore: {
+                name: "🇸🇬 싱가포르",
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Merlion_and_Marina_Bay_Sands_Singapore.jpg/640px-Merlion_and_Marina_Bay_Sands_Singapore.jpg",
+                story1: "비행기로 6시간을 날아가면 만날 수 있는, 도시 전체가 하나의 거대한 정원처럼 깨끗한 나라예요. 적도와 가까워서 항상 여름처럼 덥고 비가 갑자기 쏟아지곤 하니, 가벼운 옷과 함께 더위를 식힐 도구를 준비하는 게 좋습니다.",
+                story2: "매콤달콤한 소스에 꽃게를 볶은 '칠리 크랩'과 달콤한 카야 잼을 바른 토스트가 맛있기로 유명해요. 사자 얼굴에 물고기 몸을 가진 특이한 '머라이언' 동상 앞에서 시원한 물줄기를 맞거나, 밤하늘을 수놓는 거대한 인공 나무들의 불빛 쇼를 관람할 수 있습니다."
+            },
+            australia: {
+                name: "🇦🇺 호주 (시드니)",
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Sydney_Opera_House_-_Dec_2008.jpg/640px-Sydney_Opera_House_-_Dec_2008.jpg",
+                story1: "지구의 아래쪽(남반구)에 있어서, 우리나라와 계절이 완전히 정반대로 움직이는 신기한 나라예요. 한국이 꽁꽁 얼어붙는 겨울일 때 이곳은 따스한 여름이 시작되죠. 인천에서 비행기를 타고 10시간 동안 아래로 내려가야 만날 수 있습니다.",
+                story2: "푸른 초원이 넓어서 최고급 소고기 스테이크를 신선하게 먹을 수 있고, 바닷가 근처라 생선튀김도 인기가 많아요. 하얀 조개껍데기를 엎어놓은 모양의 '오페라 하우스'를 구경하고, 야생 공원에서 뛰어노는 캥거루와 나무에 매달린 코알라를 만날 수 있어요."
+            },
+            canada: {
+                name: "🇨🇦 캐나다 (토론토)",
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Niagara_Falls_at_night_2015.jpg/640px-Niagara_Falls_at_night_2015.jpg",
+                story1: "비행기를 타고 11시간 동안 날아가야 하는, 아름다운 단풍나무가 가득한 나라입니다. 겨울에는 눈이 조각상처럼 높이 쌓이고 엄청나게 추워지기 때문에, 알록달록 단풍이 물드는 가을철에 두꺼운 잠바를 챙겨 여행하는 것을 추천해요.",
+                story2: "나무에서 뽑아낸 달콤한 '메이플 시럽'을 뿌린 팬케이크와 치즈 가루를 얹은 감자튀김 '푸틴'이 유명합니다. 귀가 먹먹해질 정도로 엄청난 소리를 내며 쏟아지는 대형 '나이아가라 폭포'를 배 위에서 물보라를 맞으며 구경할 수 있습니다."
+            },
+            brazil: {
+                name: "🇧🇷 브라질 (리우데자네이루)",
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Christ_the_Redeemer_-_Rio_de_Janeiro%2C_Brazil.jpg/640px-Christ_the_Redeemer_-_Rio_de_Janeiro%2C_Brazil.jpg",
+                story1: "지구 반대편에 있는 나라로, 비행기를 타고 가다가 다른 비행기로 갈아타서 총 25시간 넘게 가야 해요. 비행기 안에서 하루를 꼬박 보내야 할 만큼 멀죠! 날씨는 열정적인 나라답게 아주 후끈후끈하고 더운 열대 날씨랍니다.",
+                story2: "긴 철꼬치에 고기를 꽂아 숯불에 구워내는 '슈하스코'라는 전통 고기 요리를 마음껏 맛볼 수 있어요. 산꼭대기에 세워진 거대한 예수님 동상 아래서 넓은 바다를 내려다보거나, 2월이 되면 온 도시가 들썩이는 화려한 삼바 춤 축제를 구경할 수 있어요."
+            },
+            egypt: {
+                name: "🇪🇬 이집트 (카이로)",
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/All_Gizah_Pyramids.jpg/640px-All_Gizah_Pyramids.jpg",
+                story1: "비행기를 타고 13시간 동안 날아가면 서아시아와 아프리카 사이에 위치한 사막의 나라에 도착해요. 한여름에는 햇빛이 타오르듯 뜨겁지만, 겨울(11월~2월)에는 우리나라 가을처럼 시원해져요. 단, 사막이라 건조해서 마실 물이 늘 필요해요.",
+                story2: "쌀과 파스타 면, 콩을 섞어 매콤한 소스에 비벼 먹는 '코샤리'라는 독특한 음식을 먹습니다. 이곳에서는 사막에서 커다란 낙타를 타고 흔들거리며 이동해 보거나, 아주 먼 옛날 왕들의 무덤인 거대한 피라미드와 스핑크스를 탐험하는 놀라운 경험을 합니다."
+            },
+            italy: {
+                name: "🇮🇹 이탈리아 (로마)",
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/The_Leaning_Tower_of_Pisa_SB.jpg/640px-The_Leaning_Tower_of_Pisa_SB.jpg",
+                story1: "비행기를 타고 12시간을 날아가면 만날 수 있는 역사 깊은 유럽 국가예요. 여름에는 햇볕이 눈이 부실 정도로 강하게 내리쬐기 때문에, 날씨가 화창하고 따스한 봄이나 가을철에 걷기 편한 신발을 신고 여행하기 좋습니다.",
+                story2: "우리가 평소에도 좋아하는 피자와 스파게티가 처음 만들어진 고향이에요. 후식으로는 쫀득하고 시원한 아이스크림인 '젤라또'를 먹죠. 옆으로 비스듬히 기울어져서 신기한 '피사의 사탑'을 밀거나 받치는 재미있는 포즈로 사진을 찍 놀이를 할 수 있습니다."
+            },
+            germany: {
+                name: "🇩🇪 독일 (베를린)",
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Schloss_Neuschwanstein_2013.jpg/640px-Schloss_Neuschwanstein_2013.jpg",
+                story1: "인천에서 비행기로 12시간 거리에 있는 나라입니다. 겨울에는 밤이 아주 길고 꽁꽁 얼어붙지만, 여름(6월~8월)에는 저녁 늦게까지 해가 떠 있고 날씨가 선선해서 초록빛 공원과 숲을 돌아다니며 캠핑이나 여행을 즐기기 환상적입니다.",
+                story2: "통통하고 짭짤한 진짜 독일식 소시지 구이와 하트 모양으로 구워낸 프레첼 빵이 식탁에 자주 올라와요. 디즈니 만화에 나오는 아름다운 백설공주 성의 진짜 모델인 '노이슈반스타인 성'을 방문하거나, 멋진 클래식 자동차들이 모인 박물관을 탐험할 수 있습니다."
+            },
+            spain: {
+                name: "🇪🇸 스페인 (바르셀로나)",
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Sagrada_Familia_nave_01.jpg/640px-Sagrada_Familia_nave_01.jpg",
+                story1: "유럽의 서쪽 끝에 있는 나라로, 비행기를 타고 13시간 동안 가야 해요. 일 년 내내 따뜻한 햇빛이 내리쬐어 사람들의 표정이 밝습니다. 가을이나 봄에 가면 선선해서 좋고, 강한 햇빛으로부터 피부를 지켜줄 크림을 가져가면 좋습니다.",
+                story2: "커다란 프라이팬에 노란 쌀과 새우, 조개 등 싱싱한 바다 재료를 넣고 볶은 '파에야'라는 요리가 아주 유명합니다. 무려 100년이 넘는 시간 동안 지금도 계속 짓고 있는 신비한 '사그라다 파밀리아 성당'을 구경하고, 정열적인 플라멩코 기타 음악과 춤을 감상할 수 있습니다."
+            },
+            switzerland: {
+                name: "🇨🇭 스위스 (취리히)",
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Zermatt_and_Matterhorn.jpg/640px-Zermatt_and_Matterhorn.jpg",
+                story1: "비행기로 12시간을 가야 하는, 거대하고 하얀 산들이 모여 있는 나라예요. 높은 산꼭대기에는 사계절 내내 녹지 않는 하얀 눈이 쌓여 있어서 여름에 가더라도 겨울처럼 춥기 때문에 장갑, 목도리, 두꺼운 패딩이 캐리어에 필수랍니다.",
+                story2: "추운 날씨 덕분에 따뜻하게 녹인 고소한 치즈에 빵을 찍어 먹는 '퐁듀' 요리가 발달했고, 달콤한 초콜릿도 세계 최고예요. 빨간 산악기차를 타고 높은 알프스산에 올라가 하얀 눈밭에서 짜릿한 눈썰매를 타며 스릴을 즐길 수 있습니다."
+            },
+            kenya: {
+                name: "🇰🇪 케냐 (나이로비)",
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Elephants_at_Amboseli_national_park_against_Mount_Kilimanjaro.jpg/640px-Elephants_at_Amboseli_national_park_against_Mount_Kilimanjaro.jpg",
+                story1: "아프리카 대륙에 있는 나라로, 비행기를 타고 14시간 동안 날아가야 해요. 더운 지역에 있지만 땅이 아주 높아서 바람이 시원하게 붑니다. 풀과 나무가 자라고 동물들이 많이 이동하는 7월~8월이 여행하기 좋지만, 풀숲에 모기가 많아 긴바지가 안전해요.",
+                story2: "옥수수가루를 정성껏 반죽해 떡처럼 찐 '우갈리'라는 주식을 고기구이와 함께 손으로 떼어먹는 문화를 가지고 있어요. 울타리가 있는 동물원이 아니라, 끝없는 초원에서 진짜 사자, 기린, 코끼리 가족이 뛰어노는 모습을 튼튼한 짚차를 타고 구경하는 사파리 여행을 합니다."
+            },
+            india: {
+                name: "🇮🇳 인도 (뉴델리)",
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Taj_Mahal%2C_Agra%2C_India_edit3.jpg/640px-Taj_Mahal%2C_Agra%2C_India_edit3.jpg",
+                story1: "비행기를 타고 서쪽으로 8시간 동안 날아가면 도착하는 신비로운 나라입니다. 여름에는 엄청나게 뜨거운 비가 쏟아져서, 바람이 선선하게 부는 겨울철(11월~2월)이 여행하기 딱 좋습니다. 사람이 많고 먼지가 일어날 수 있어 위생용품을 챙기면 든든해요.",
+                story2: "우리가 집에서 먹는 것보다 훨씬 향이 진하고 매콤한 진짜 카레를 먹어볼 수 있고, '난'이라고 부르는 쫄깃한 밀가루 빵을 카레에 찍어 먹어요. 하얀 대리석으로 지어 눈이 부시도록 아름다운 궁전 모양의 건축물 '타지마할'을 산책하며 옛날 이야기를 전해 들을 수 있습니다."
+            },
+            mexico: {
+                name: "🇲🇽 멕시코 (멕시코시티)",
+                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Chichen_Itza_3.jpg/640px-Chichen_Itza_3.jpg",
+                story1: "태평양을 건너 비행기를 타고 14시간 동안 날아가야 하는 정열의 나라입니다. 햇빛이 무척 강하고 따뜻한 성질을 가진 곳이라 겨울철에 가도 화창해요. 머리가 뜨거워질 수 있으니 햇볕을 가려줄 커다란 모자가 큰 도움이 됩니다.",
+                story2: "옥수수로 만든 얇은 전병에 고기와 신선한 야채, 매콤한 소스를 싸서 먹는 '타코' 요리와 바삭한 나쵸 과자가 간식으로 유명해요. 선인장이 가득한 들판을 지나 챙이 엄청나게 넓은 모자 '솜브레로'를 쓰고 사진을 찍거나, 돌로 쌓은 마야 문명의 피라미드를 관찰할 수 있습니다."
+            }
+        };
+
+        function showCountry(countryKey) {
+            const data = countryData[countryKey];
+            
+            document.getElementById('countryName').innerText = data.name;
+            document.getElementById('countryImg').src = data.img;
+            document.getElementById('story1').innerText = data.story1;
+            document.getElementById('story2').innerText = data.story2;
+            
+            document.getElementById('infoCard').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
